@@ -32,7 +32,8 @@ namespace Trestlebridge
                 Console.WriteLine("1. Create Facility");
                 Console.WriteLine("2. Purchase Animals");
                 Console.WriteLine("3. Purchase Seeds");
-                Console.WriteLine("4. Exit.");
+                Console.WriteLine("4. Display Farm Status");
+                Console.WriteLine("5. Exit.");
                 Console.WriteLine();
 
                 Console.WriteLine("Choose a FARMS option");
@@ -42,16 +43,23 @@ namespace Trestlebridge
                 if (option == "1")
                 {
                     DisplayBanner();
-                    CreateFacility.CollectInput();
+                    CreateFacility.CollectInput(Trestlebridge);
 
                 }
                 else if (option == "2")
                 {
-                    Console.Write("What should I reverse? ");
-                    string input = Console.ReadLine();
-                    Console.WriteLine(new string(input.Reverse().ToArray()));
+
+                }
+                else if (option == "3")
+                {
+
                 }
                 else if (option == "4")
+                {
+                    Console.WriteLine(Trestlebridge);
+                    Console.ReadLine();
+                }
+                else if (option == "5")
                 {
                     Console.WriteLine("Today is a great day for farming");
                     break;

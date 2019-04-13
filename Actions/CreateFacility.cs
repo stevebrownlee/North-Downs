@@ -1,10 +1,11 @@
 using System;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Models;
 using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Actions {
     public class CreateFacility {
-        public static IFacility CollectInput () {
+        public static void CollectInput (Farm farm) {
             Console.WriteLine ("1. Grazing field");
             Console.WriteLine ("2. Plowed field");
             Console.WriteLine ("3. Natural field");
@@ -20,7 +21,19 @@ namespace Trestlebridge.Actions {
             switch (Int32.Parse(input))
             {
                 case 1:
-                    return new GrazingField();
+                    farm.AddGrazingField(new GrazingField());
+                    break;
+                case 2:
+                    farm.AddPlowedField(new PlowedField());
+                    break;
+                case 3:
+                    farm.AddNaturalField(new NaturalField());
+                    break;
+                case 4:
+                    farm.AddChickenHouse(new ChickenHouse());
+                    break;
+                case 5:
+                    farm.AddDuckHouse(new DuckHouse());
                     break;
                 default:
                     break;
