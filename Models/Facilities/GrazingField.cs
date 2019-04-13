@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Facilities {
-    public class GrazingField : IFacility
+    public class GrazingField : IFacility<IGrazing>
     {
         private int _capacity = 50;
 
@@ -26,11 +26,6 @@ namespace Trestlebridge.Models.Facilities {
             if (_animals.Count + animals.Count <= _capacity) {
                 _animals.AddRange(animals);
             }
-        }
-
-        public void AddResource()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

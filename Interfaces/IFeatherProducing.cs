@@ -5,6 +5,6 @@ namespace Trestlebridge.Interfaces
     public interface IFeatherProducing
     {
         string Product { get; }
-        double Process (FeatherHarvester equipment);
+        double Pluck ();
     }
 }

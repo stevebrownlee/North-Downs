@@ -19,7 +19,7 @@ namespace Trestlebridge.Models.Animals {
             Console.WriteLine($"Cow {_id} just ate {this.GrassPerDay}kg grass");
         }
 
-        public double Process (MeatProcessor equipment) {
+        public double Butcher () {
             return _meatProduced;
         }
 

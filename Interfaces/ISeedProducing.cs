@@ -5,6 +5,6 @@ namespace Trestlebridge.Interfaces
     public interface ISeedProducing
     {
         string Product { get; }
-        double Process (SeedHarvester equipment);
+        double Harvest ();
     }
 }
