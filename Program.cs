@@ -15,8 +15,8 @@ namespace Trestlebridge
         +-++-++-++-++-++-++-++-++-++-++-++-++-+
         |T||r||e||s||t||l||e||b||r||i||d||g||e|
         +-++-++-++-++-++-++-++-++-++-++-++-++-+
-                |F||a||r||m||s|
-                +-++-++-++-++-+");
+                    |F||a||r||m||s|
+                    +-++-++-++-++-+");
             Console.WriteLine();
         }
         static void Main(string[] args)
@@ -33,7 +33,7 @@ namespace Trestlebridge
                 Console.WriteLine("2. Purchase Animals");
                 Console.WriteLine("3. Purchase Seeds");
                 Console.WriteLine("4. Display Farm Status");
-                Console.WriteLine("5. Exit.");
+                Console.WriteLine("5. Exit");
                 Console.WriteLine();
 
                 Console.WriteLine("Choose a FARMS option");
@@ -44,11 +44,11 @@ namespace Trestlebridge
                 {
                     DisplayBanner();
                     CreateFacility.CollectInput(Trestlebridge);
-
                 }
                 else if (option == "2")
                 {
-
+                    DisplayBanner();
+                    PurchaseStock.CollectInput(Trestlebridge);
                 }
                 else if (option == "3")
                 {
@@ -56,7 +56,10 @@ namespace Trestlebridge
                 }
                 else if (option == "4")
                 {
+                    DisplayBanner();
                     Console.WriteLine(Trestlebridge);
+                    Console.WriteLine("\n\n\n");
+                    Console.WriteLine("Press return key to go back to main menu.");
                     Console.ReadLine();
                 }
                 else if (option == "5")

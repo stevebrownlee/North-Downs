@@ -14,7 +14,7 @@ namespace Trestlebridge.Models.Equipment
         public void ProcessResources ()
         {
             _animals.ForEach(animal =>
-                System.Console.WriteLine($"{animal.Butcher()}kg of {animal.Product} was produced")
+                System.Console.WriteLine($"{animal.Butcher()}kg of meat was produced")
             );
         }
     }
