@@ -8,8 +8,9 @@ namespace Trestlebridge.Actions {
     public class PurchaseStock {
         public static void CollectInput (Farm farm) {
             Console.WriteLine ("1. Cow");
-            Console.WriteLine ("2. Sunflower");
+            Console.WriteLine ("2. Wildflower");
             Console.WriteLine ("3. Ostrich");
+            Console.WriteLine ("4. Sunflower");
 
             Console.WriteLine ();
             Console.WriteLine ("What are you buying today?");
@@ -25,11 +26,14 @@ namespace Trestlebridge.Actions {
                 case 2:
                     // ChooseGrazingField.CollectInput(farm, new Sunflower());
                     // TODO: Code above uncommented for boilerplate
+
+
                     break;
                 case 3:
                     ChooseGrazingField.CollectInput(farm, new Ostrich());
                     break;
                 case 4:
+                    ChoosePlantingField.CollectInput(farm, new Sunflower());
                     break;
                 case 5:
                     break;

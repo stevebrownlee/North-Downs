@@ -2,9 +2,8 @@ using Trestlebridge.Models.Equipment;
 
 namespace Trestlebridge.Interfaces
 {
-    public interface ISeedProducing
+    public interface ISeedProducing : IResource
     {
-        string Product { get; }
         double Harvest ();
     }
 }

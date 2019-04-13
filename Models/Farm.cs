@@ -10,7 +10,7 @@ namespace Trestlebridge.Models
     {
         public List<GrazingField> GrazingFields { get; } = new List<GrazingField>();
         public List<PlowedField> PlowedFields { get; } = new List<PlowedField>();
-        public List<NaturalField> NaturalFields { get; } = new List<NaturalField>();
+        public List<NaturalField> NaturalFields { get; } = new List<NaturalField>();  // TODO: Remove these three for boilerplate
         public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
 
@@ -23,7 +23,7 @@ namespace Trestlebridge.Models
             Console.WriteLine(typeof(T).ToString());
             switch (typeof(T).ToString())
             {
-                // case "Cow":
+                // TODO: Boilerplate code and remove line below... case "Cow":
                 case "Trestlebridge.Interfaces.IGrazing":
                     GrazingFields[index].AddResource((IGrazing)resource);
                     break;
