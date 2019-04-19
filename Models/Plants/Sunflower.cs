@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models.Equipment;
 
-namespace Trestlebridge.Models.Animals {
+namespace Trestlebridge.Models.Plants {
     public class Sunflower : IResource, ISeedProducing {
 
         private Guid _id = Guid.NewGuid();

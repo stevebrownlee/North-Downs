@@ -5,7 +5,7 @@ using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Actions {
-    public class ChoosePlantingField {
+    public class ChooseSeedField {
         public static void CollectInput (Farm farm, ISeedProducing plant) {
             Console.Clear();
 

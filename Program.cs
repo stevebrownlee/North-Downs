@@ -54,7 +54,7 @@ namespace Trestlebridge
                 else if (option == "3")
                 {
                     DisplayBanner();
-                    PurchaseStock.CollectInput(Trestlebridge);
+                    PurchaseSeed.CollectInput(Trestlebridge);
 
                 }
                 else if (option == "4")
