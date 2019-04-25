@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models.Facilities;
+using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Models
 {
@@ -13,6 +14,22 @@ namespace Trestlebridge.Models
         public List<NaturalField> NaturalFields { get; } = new List<NaturalField>();  // TODO: Remove these three for boilerplate
         public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
+
+        public Farm () {
+            this.PlowedFields.Add(new PlowedField());
+            this.PlowedFields.Add(new PlowedField());
+            this.PlowedFields.Add(new PlowedField());
+
+            this.NaturalFields.Add(new NaturalField());
+            this.NaturalFields.Add(new NaturalField());
+
+            this.PlowedFields[0].AddResource(new Sesame());
+            this.PlowedFields[0].AddResource(new Sesame());
+            this.PlowedFields[0].AddResource(new Sesame());
+            this.PlowedFields[1].AddResource(new Sesame());
+            this.PlowedFields[1].AddResource(new Sesame());
+            this.PlowedFields[2].AddResource(new Sesame());
+        }
 
         /*
             This method must specify the correct product interface of the

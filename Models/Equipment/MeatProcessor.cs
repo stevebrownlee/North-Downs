@@ -3,15 +3,17 @@ using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Equipment
 {
-    public class MeatProcessor : IEquipment
+    public class MeatProcessor : Processor<IMeatProducing>
     {
-        public double Capacity { get; } = 22;
-
         public string Name { get; } = "Meat processor";
 
         public List<IMeatProducing> _animals { get; } = new List<IMeatProducing>();
 
-        public void ProcessResources ()
+        public MeatProcessor () {
+            Capacity = 22;
+        }
+
+        public override void ProcessResources ()
         {
             _animals.ForEach(animal =>
                 System.Console.WriteLine($"{animal.Butcher()}kg of meat was produced")
