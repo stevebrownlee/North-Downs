@@ -13,6 +13,7 @@ namespace Trestlebridge.Models.Equipment
 
         public override void ProcessResources ()
         {
+            System.Console.WriteLine("Processing resources...");
             Resources.ForEach(animal =>
                 System.Console.WriteLine($"{animal.Harvest()} seeds were produced")
             );

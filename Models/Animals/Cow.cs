@@ -6,15 +6,16 @@ using Trestlebridge.Models.Equipment;
 namespace Trestlebridge.Models.Animals {
     public class Cow : IResource, IGrazing, IMeatProducing {
 
-        private Guid _id = Guid.NewGuid();
+        public Guid Id { get; } = Guid.NewGuid();
         private double _meatProduced = 18.25;
 
         private string _shortId {
             get {
-                return this._id.ToString().Substring(this._id.ToString().Length - 6);
+                return this.Id.ToString().Substring(this.Id.ToString().Length - 6);
             }
         }
 
+        public bool InProcess { get; set; }
         public double GrassPerDay { get; set; } = 5.4;
         public string Type { get; } = "Cow";
 

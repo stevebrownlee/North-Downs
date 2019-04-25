@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Models.Equipment;
 using Trestlebridge.Models.Facilities;
 using Trestlebridge.Models.Plants;
 
@@ -14,6 +15,12 @@ namespace Trestlebridge.Models
         public List<NaturalField> NaturalFields { get; } = new List<NaturalField>();  // TODO: Remove these three for boilerplate
         public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
+
+        public SeedHarvester SeedHarvester => new SeedHarvester();
+        public Composter Composter => new Composter();
+        public EggGatherer EggGatherer => new EggGatherer();
+        public MeatProcessor MeatProcessor => new MeatProcessor();
+        public FeatherHarvester FeatherHarvester => new FeatherHarvester();
 
         public Farm () {
             this.PlowedFields.Add(new PlowedField());

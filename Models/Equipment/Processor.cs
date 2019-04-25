@@ -8,7 +8,7 @@ namespace Trestlebridge.Models.Equipment
     {
         public double Capacity { get; protected set; }
 
-        public List<T> Resources { get; set; }
+        public List<T> Resources { get; set; } = new List<T>();
 
         public virtual void ProcessResources () {
 

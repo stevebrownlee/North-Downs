@@ -5,15 +5,16 @@ namespace Trestlebridge.Models.Plants
 {
     public class Sesame : IResource, ISeedProducing
     {
-        private Guid _id = Guid.NewGuid();
         private int _seedsProduced = 40;
         private string _shortId {
             get {
-                return this._id.ToString().Substring(this._id.ToString().Length - 6);
+                return this.Id.ToString().Substring(this.Id.ToString().Length - 6);
             }
         }
 
+        public Guid Id { get; } = Guid.NewGuid();
         public string Type { get; } = "Sesame";
+        public bool InProcess { get; set; }
 
         // Methods
         public double Harvest () {
