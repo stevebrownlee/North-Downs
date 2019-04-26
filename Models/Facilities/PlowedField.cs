@@ -24,6 +24,11 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        public void DiscardResource (int index)
+        {
+            _plants.RemoveAt(index);
+        }
+
         public void AddResource (ISeedProducing plant)
         {
             if (_plants.Count < _capacity) {

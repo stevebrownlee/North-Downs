@@ -24,6 +24,12 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+
+        public void DiscardResource (int index)
+        {
+            _animals.RemoveAt(index);
+        }
+
         public void AddResource (IGrazing animal)
         {
             if (_animals.Count < _capacity) {

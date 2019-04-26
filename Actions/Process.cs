@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
@@ -38,58 +39,12 @@ namespace Trestlebridge.Actions {
                     Process.ChooseMeatResource(farm);
                     break;
                 case 5:
-                    Process.ChooseSeedResource(farm);
+                    ChooseSeedResource.CollectInput(farm);
                     break;
                 default:
                     break;
             }
 
-        }
-
-        private static void ChooseSeedResource(Farm farm)
-        {
-            // List appropriate resource facilities
-            int i = 1;
-            farm.PlowedFields.ForEach(f => {
-                Console.WriteLine($"{i}. {f.GetType().Name}");
-                i++;
-            });
-            Console.WriteLine ($"{i}. Complete Processing");
-
-            Console.WriteLine ();
-            Console.WriteLine ("Which facility has the resources to use?");
-
-            Console.Write ("> ");
-            int fieldIndex = Int32.Parse(Console.ReadLine ()) - 1;
-
-            // If user chose to complete processing
-            if (fieldIndex + 1 == i) {
-                farm.SeedHarvester.ProcessResources();
-                Console.ReadLine();
-            } else {
-                var chosenField = farm.PlowedFields[fieldIndex];
-
-                // List resources in chosen facility
-                i = 1;
-                chosenField.Resources.ForEach(r => {
-                    if (!r.InProcess) {
-                        Console.WriteLine($"{i}. {r.Type}");
-                    }
-                    i++;
-                });
-
-                Console.WriteLine ();
-                Console.WriteLine ("Which resource?");
-
-                Console.Write ("> ");
-                int resourceIndex = Int32.Parse(Console.ReadLine ()) - 1;
-                var chosenResource = chosenField.Resources[resourceIndex];
-
-                chosenResource.InProcess = true;
-                farm.SeedHarvester.Resources.Add(chosenResource);
-
-                Process.ChooseSeedResource(farm);
-            }
         }
 
         private static void ChooseMeatResource(Farm farm)
