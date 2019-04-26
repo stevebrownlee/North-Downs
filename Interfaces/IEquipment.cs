@@ -1,12 +1,13 @@
+using System;
 using System.Collections.Generic;
 
 namespace Trestlebridge.Interfaces
 {
-    public interface IEquipment<T>
+    public interface IEquipment
     {
         double Capacity { get; }
-        List<T> Resources { get; set; }
+        List<Guid> Resources { get; set; }
 
-        void ProcessResources ();
+        void ProcessResources (Farm farm);
     }
 }

@@ -63,7 +63,7 @@ namespace Trestlebridge.Actions {
 
             // If user chose to complete processing
             if (fieldIndex + 1 == i) {
-                farm.SeedHarvester.ProcessResources();
+                farm.SeedHarvester.ProcessResources(farm);
                 Console.ReadLine();
             } else {
                 var chosenField = farm.PlowedFields[fieldIndex];
@@ -85,7 +85,8 @@ namespace Trestlebridge.Actions {
                 var chosenResource = chosenField.Resources[resourceIndex];
 
                 chosenResource.InProcess = true;
-                farm.SeedHarvester.Resources.Add(chosenResource);
+                // TODO: Add resource id, not resource instance
+                farm.SeedHarvester.Resources.Add(chosenResource.Id);
 
                 Process.ChooseSeedResource(farm);
             }
