@@ -3,21 +3,21 @@ using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Equipment
 {
-    public class MeatProcessor : Processor<IMeatProducing>
+    public class MeatProcessor : Processor, IEquipment
     {
         public string Name { get; } = "Meat processor";
 
-        public List<IMeatProducing> _animals { get; } = new List<IMeatProducing>();
-
         public MeatProcessor () {
             Capacity = 22;
+            Resources = new List<IResource>();
         }
 
         public override void ProcessResources ()
         {
-            _animals.ForEach(animal =>
-                System.Console.WriteLine($"{animal.Butcher()}kg of meat was produced")
-            );
+            Resources.ForEach(animal => {
+                IMeatProducing resource = (IMeatProducing)animal;
+                System.Console.WriteLine($"{resource.Butcher()}kg of meat was produced");
+            });
         }
     }
 }
