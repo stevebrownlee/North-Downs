@@ -16,11 +16,11 @@ namespace Trestlebridge.Models
         public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
 
-        public SeedHarvester SeedHarvester { get; } = new SeedHarvester();
-        public Composter Composter { get; } = new Composter();
-        public EggGatherer EggGatherer { get; } = new EggGatherer();
-        public MeatProcessor MeatProcessor { get; } = new MeatProcessor();
-        public FeatherHarvester FeatherHarvester { get; } = new FeatherHarvester();
+        public SeedHarvester SeedHarvester { get; set; } = new SeedHarvester();
+        public Composter Composter { get; set; } = new Composter();
+        public EggGatherer EggGatherer { get; set; } = new EggGatherer();
+        public MeatProcessor MeatProcessor { get; set; } = new MeatProcessor();
+        public FeatherHarvester FeatherHarvester { get; set; } = new FeatherHarvester();
 
         public Farm () {
             this.PlowedFields.Add(new PlowedField());

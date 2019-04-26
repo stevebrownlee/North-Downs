@@ -10,8 +10,9 @@ using Trestlebridge.Models.Plants;
 namespace Trestlebridge.Actions {
     public class ChooseSeedResource {
 
+        static List<Discard> discards = new List<Discard>();
+
         public static void CollectInput (Farm farm) {
-            List<Discard> discards = new List<Discard>();
 
             Console.Clear();
 
@@ -32,7 +33,8 @@ namespace Trestlebridge.Actions {
                 farm.SeedHarvester.ProcessResources();
 
                 // Remove items from source list
-                discards.ForEach(d => farm.PlowedFields[d.ListIndex].DiscardResource(d.ItemIndex));
+                ChooseSeedResource.discards.ForEach(d => farm.PlowedFields[d.ListIndex].DiscardResource(d.ItemIndex));
+                ChooseSeedResource.discards.Clear();
                 Console.ReadLine();
             } else {
                 var chosenField = farm.PlowedFields[fieldIndex];
@@ -51,7 +53,7 @@ namespace Trestlebridge.Actions {
                 chosenResource.InProcess = true;
                 farm.SeedHarvester.Resources.Add(chosenResource);
 
-                discards.Add(new Discard {
+                ChooseSeedResource.discards.Add(new Discard {
                     ItemIndex = resourceIndex,
                     ListIndex = fieldIndex
                 });
