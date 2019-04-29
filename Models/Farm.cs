@@ -47,7 +47,6 @@ namespace Trestlebridge.Models
             Console.WriteLine(typeof(T).ToString());
             switch (typeof(T).ToString())
             {
-                // TODO: Boilerplate code and remove line below... case "Cow":
                 case "Trestlebridge.Interfaces.IGrazing":
                     GrazingFields[index].AddResource((IGrazing)resource);
                     break;
@@ -55,8 +54,6 @@ namespace Trestlebridge.Models
                     break;
             }
         }
-
-        // TODO: Remove all Add* methods except grazing fields for boilerplate
 
         public void AddChickenHouse (ChickenHouse house)
         {
@@ -88,7 +85,7 @@ namespace Trestlebridge.Models
             StringBuilder report = new StringBuilder();
 
             GrazingFields.ForEach(gf => report.Append(gf));
-            PlowedFields.ForEach(pf => report.Append(pf));  // TODO: Remove from here down for boilerplate
+            PlowedFields.ForEach(pf => report.Append(pf));
             NaturalFields.ForEach(nf => report.Append(nf));
             ChickenHouses.ForEach(ch => report.Append(ch));
             DuckHouses.ForEach(dh => report.Append(dh));

@@ -4,7 +4,6 @@ namespace Trestlebridge.Interfaces
 {
     public interface IFeatherProducing
     {
-        string Product { get; }
         double Pluck ();
     }
 }

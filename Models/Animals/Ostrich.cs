@@ -30,7 +30,7 @@ namespace Trestlebridge.Models.Animals {
             return _meatProduced;
         }
 
-        public double Gather()  // TODO: Take this out for boilerplate
+        public double Gather()
         {
             return _eggsProduced;
         }

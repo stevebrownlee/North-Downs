@@ -36,7 +36,7 @@ namespace Trestlebridge.Actions {
                     Process.ChooseFeatherResource(farm);
                     break;
                 case 4:
-                    Process.ChooseMeatResource(farm);
+                    ChooseMeatResource.CollectInput(farm);
                     break;
                 case 5:
                     ChooseSeedResource.CollectInput(farm);
@@ -47,10 +47,6 @@ namespace Trestlebridge.Actions {
 
         }
 
-        private static void ChooseMeatResource(Farm farm)
-        {
-            throw new NotImplementedException();
-        }
 
         private static void ChooseFeatherResource(Farm farm)
         {

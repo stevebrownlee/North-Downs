@@ -1,21 +1,38 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
+using Trestlebridge.Models.Animals;
+using Trestlebridge.Models.Equipment;
+using Trestlebridge.Models.Plants;
 
-namespace Trestlebridge.Actions
-{
+namespace Trestlebridge.Actions {
     public class ChooseMeatResource {
 
+        static List<Discard> discards = new List<Discard>();
+
         public static void CollectInput (Farm farm) {
-            List<Discard> discards = new List<Discard>();
 
             Console.Clear();
 
+            List<IFacility<IMeatProducing>> meatProducingFields = new List<IFacility<IMeatProducing>>();
+
+            farm.PlowedFields.ForEach(field => {
+                meatProducingFields.Add((IFacility<IMeatProducing>)field);
+            });
+
+            farm.ChickenHouses.ForEach(field => {
+                meatProducingFields.Add((IFacility<IMeatProducing>)field);
+            });
+
             // List appropriate resource facilities
             int i = 1;
-            farm.PlowedFields.ForEach(f => {
-                Console.WriteLine($"{i++}. {f.GetType().Name}");
+            meatProducingFields.ForEach(f => {
+                Console.WriteLine($"{i}. {f.GetType().Name}");
+                i++;
             });
+
             Console.WriteLine ($"{i}. Complete Processing");
 
             int fieldIndex = Prompt.Query("Which facility has the resources to use?") - 1;
@@ -27,7 +44,8 @@ namespace Trestlebridge.Actions
                 farm.SeedHarvester.ProcessResources();
 
                 // Remove items from source list
-                discards.ForEach(d => farm.PlowedFields[d.ListIndex].Resources.RemoveAt(d.ItemIndex));
+                ChooseMeatResource.discards.ForEach(d => farm.PlowedFields[d.ListIndex].DiscardResource(d.ItemIndex));
+                ChooseMeatResource.discards.Clear();
                 Console.ReadLine();
             } else {
                 var chosenField = farm.PlowedFields[fieldIndex];
@@ -46,12 +64,12 @@ namespace Trestlebridge.Actions
                 chosenResource.InProcess = true;
                 farm.SeedHarvester.Resources.Add(chosenResource);
 
-                discards.Add(new Discard {
+                ChooseMeatResource.discards.Add(new Discard {
                     ItemIndex = resourceIndex,
                     ListIndex = fieldIndex
                 });
 
-                ChooseSeedResource.CollectInput(farm);
+                ChooseMeatResource.CollectInput(farm);
             }
         }
     }
