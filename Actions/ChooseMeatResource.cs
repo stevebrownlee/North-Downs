@@ -16,19 +16,19 @@ namespace Trestlebridge.Actions {
 
             Console.Clear();
 
-            List<IFacility<IMeatProducing>> meatProducingFields = new List<IFacility<IMeatProducing>>();
+            List<dynamic> meatProducingFacilities = new List<dynamic>();
 
-            farm.PlowedFields.ForEach(field => {
-                meatProducingFields.Add((IFacility<IMeatProducing>)field);
+            farm.GrazingFields.ForEach(field => {
+                    meatProducingFacilities.Add(field);
             });
 
             farm.ChickenHouses.ForEach(field => {
-                meatProducingFields.Add((IFacility<IMeatProducing>)field);
+                    meatProducingFacilities.Add(field);
             });
 
             // List appropriate resource facilities
             int i = 1;
-            meatProducingFields.ForEach(f => {
+            meatProducingFacilities.ForEach(f => {
                 Console.WriteLine($"{i}. {f.GetType().Name}");
                 i++;
             });
@@ -41,28 +41,35 @@ namespace Trestlebridge.Actions {
             if (fieldIndex + 1 == i) {
 
                 // Output the result of processing the resources
-                farm.SeedHarvester.ProcessResources();
+                farm.MeatProcessor.ProcessResources();
 
                 // Remove items from source list
-                ChooseMeatResource.discards.ForEach(d => farm.PlowedFields[d.ListIndex].DiscardResource(d.ItemIndex));
+                ChooseMeatResource.discards.ForEach(d => {
+                    var facility = meatProducingFacilities[d.ListIndex];
+                    facility.DiscardResource(d.ItemIndex);
+                });
                 ChooseMeatResource.discards.Clear();
                 Console.ReadLine();
             } else {
-                var chosenField = farm.PlowedFields[fieldIndex];
+                var chosenFacility = meatProducingFacilities[fieldIndex];
 
                 // List resources in chosen facility
                 i = 1;
-                chosenField.Resources.ForEach(r => {
-                    if (!r.InProcess) {
-                        Console.WriteLine($"{i}. {r.Type}");
+                foreach (var resource in chosenFacility.Resources)
+                {
+                    var animal = (IResource) resource;
+                    if (!animal.InProcess) {
+                        Console.WriteLine($"{i}. {animal.Type}");
                     }
                     i++;
-                });
+
+                }
+
                 int resourceIndex = Prompt.Query("Which resource?") - 1;
-                var chosenResource = chosenField.Resources[resourceIndex];
+                var chosenResource = (IResource)chosenFacility.Resources[resourceIndex];
 
                 chosenResource.InProcess = true;
-                farm.SeedHarvester.Resources.Add(chosenResource);
+                farm.MeatProcessor.Resources.Add(chosenResource);
 
                 ChooseMeatResource.discards.Add(new Discard {
                     ItemIndex = resourceIndex,

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Models.Animals;
 using Trestlebridge.Models.Equipment;
 using Trestlebridge.Models.Facilities;
 using Trestlebridge.Models.Plants;
@@ -23,12 +24,16 @@ namespace Trestlebridge.Models
         public FeatherHarvester FeatherHarvester { get; set; } = new FeatherHarvester();
 
         public Farm () {
-            this.PlowedFields.Add(new PlowedField());
-            this.PlowedFields.Add(new PlowedField());
-            this.PlowedFields.Add(new PlowedField());
+            this.GrazingFields.Add(new GrazingField());
+            this.GrazingFields[0].AddResource(new Cow());
+            this.GrazingFields[0].AddResource(new Cow());
+            this.GrazingFields[0].AddResource(new Cow());
+            this.GrazingFields[0].AddResource(new Ostrich());
 
-            this.NaturalFields.Add(new NaturalField());
-            this.NaturalFields.Add(new NaturalField());
+
+            this.PlowedFields.Add(new PlowedField());
+            this.PlowedFields.Add(new PlowedField());
+            this.PlowedFields.Add(new PlowedField());
 
             this.PlowedFields[0].AddResource(new Sesame());
             this.PlowedFields[0].AddResource(new Sesame());
@@ -36,6 +41,18 @@ namespace Trestlebridge.Models
             this.PlowedFields[1].AddResource(new Sesame());
             this.PlowedFields[1].AddResource(new Sesame());
             this.PlowedFields[2].AddResource(new Sesame());
+
+
+            this.ChickenHouses.Add(new ChickenHouse());
+            this.ChickenHouses.Add(new ChickenHouse());
+
+            this.ChickenHouses[0].AddResource(new Chicken());
+            this.ChickenHouses[0].AddResource(new Chicken());
+
+
+            this.NaturalFields.Add(new NaturalField());
+            this.NaturalFields.Add(new NaturalField());
+
         }
 
         /*
