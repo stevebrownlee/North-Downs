@@ -42,6 +42,8 @@ namespace Trestlebridge.Models
             this.PlowedFields[1].AddResource(new Sesame());
             this.PlowedFields[2].AddResource(new Sesame());
 
+            this.DuckHouses.Add(new DuckHouse());
+            this.DuckHouses[0].AddResource(new Duck());
 
             this.ChickenHouses.Add(new ChickenHouse());
             this.ChickenHouses.Add(new ChickenHouse());

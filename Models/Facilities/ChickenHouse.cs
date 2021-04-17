@@ -7,7 +7,8 @@ using Trestlebridge.Models.Animals;
 namespace Trestlebridge.Models.Facilities {
     public class ChickenHouse : IMeatProducer<Chicken>
     {
-        private int _capacity = 50;
+        private int _capacity = 15;
+
         public Guid Id { get; } = Guid.NewGuid();
 
         private List<Chicken> _animals = new List<Chicken>();
@@ -23,7 +24,6 @@ namespace Trestlebridge.Models.Facilities {
                 return _animals;
             }
         }
-
 
         public void DiscardResource (int index)
         {
