@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
-using Trestlebridge.Models.Animals;
-using Trestlebridge.Models.Equipment;
-using Trestlebridge.Models.Plants;
 
-namespace Trestlebridge.Actions {
+namespace Trestlebridge.Actions
+{
     public class ChooseMeatResource {
 
         static List<Discard> discards = new List<Discard>();
@@ -62,7 +59,6 @@ namespace Trestlebridge.Actions {
                         Console.WriteLine($"{i}. {animal.Type}");
                     }
                     i++;
-
                 }
 
                 int resourceIndex = Prompt.Query("Which resource?") - 1;
